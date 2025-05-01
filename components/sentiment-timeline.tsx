@@ -29,7 +29,7 @@ export default function SentimentTimeline({ data }: SentimentTimelineProps) {
       return (
         <div className="bg-white dark:bg-[#1a1a1a] p-2 border rounded shadow-sm text-sm">
           <p className="font-medium">{`Time: ${label}`}</p>
-          <p className={`${value > 50 ? "text-green-500" : value < 0 ? "text-red-500" : "text-blue-500"}`}>
+          <p className={`${value > 50 ? "text-green-500" : value < 0 ? "text-red-500" : "text-gm-blue"}`}>
             {`Sentiment: ${sentiment}`}
           </p>
         </div>
@@ -57,10 +57,10 @@ export default function SentimentTimeline({ data }: SentimentTimelineProps) {
           <Line
             type="monotone"
             dataKey="value"
-            stroke="#8884d8"
+            stroke="#0170CE" // GM Blue
             strokeWidth={2}
             dot={{
-              stroke: (entry) => (entry.value > 50 ? "#22c55e" : entry.value < 0 ? "#ef4444" : "#3b82f6"),
+              stroke: (entry) => (entry.value > 50 ? "#22c55e" : entry.value < 0 ? "#ef4444" : "#0170CE"),
               strokeWidth: 2,
               r: 4,
               fill: "#fff",

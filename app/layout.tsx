@@ -8,8 +8,11 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "AI Tools Platform",
-  description: "Modern platform for AI chatbot and video sentiment analysis",
+  title: "GM AI Tools Platform",
+  description: "Modern platform for AI chatbot and video sentiment analysis by General Motors",
+  icons: {
+    icon: "/images/gm-logo-2021.png",
+  },
     generator: 'v0.dev'
 }
 

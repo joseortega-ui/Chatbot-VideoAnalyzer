@@ -139,30 +139,34 @@ export default function VideoAnalyzer() {
 
   return (
     <div className="max-w-4xl mx-auto p-4 md:p-8">
-      <h1 className="text-3xl font-bold mb-6">YouTube Video Sentiment Analyzer</h1>
+      <h1 className="text-3xl font-bold mb-6 text-gm-darkblue dark:text-gm-blue">YouTube Video Sentiment Analyzer</h1>
       <p className="text-muted-foreground mb-8">
         Paste a YouTube video link to analyze the sentiment throughout the content.
       </p>
 
       {!analysisComplete && !isAnalyzing ? (
-        <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-6 shadow-sm border border-gray-100 dark:border-gray-800">
+        <div className="bg-white dark:bg-gm-navy rounded-lg p-6 shadow-sm border border-gray-100 dark:border-gm-blue/20">
           <form onSubmit={handleYoutubeSubmit} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="youtube-url">YouTube Video URL</Label>
               <div className="flex gap-2">
                 <div className="relative flex-1">
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                    <Youtube className="h-4 w-4 text-gray-400" />
+                    <Youtube className="h-4 w-4 text-gray-400 dark:text-gray-300" />
                   </div>
                   <Input
                     id="youtube-url"
                     placeholder="https://www.youtube.com/watch?v=..."
                     value={youtubeUrl}
                     onChange={(e) => setYoutubeUrl(e.target.value)}
-                    className="pl-10"
+                    className="pl-10 focus-visible:ring-gm-blue dark:border-gm-navy/80"
                   />
                 </div>
-                <Button type="submit" disabled={!youtubeUrl.trim()}>
+                <Button
+                  type="submit"
+                  disabled={!youtubeUrl.trim()}
+                  className="bg-gm-blue hover:bg-gm-darkblue text-white"
+                >
                   Analyze
                 </Button>
               </div>
@@ -182,7 +186,7 @@ export default function VideoAnalyzer() {
             className="space-y-6"
           >
             {/* Video info */}
-            <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-6 shadow-sm border border-gray-100 dark:border-gray-800">
+            <div className="bg-white dark:bg-gm-navy rounded-lg p-6 shadow-sm border border-gray-100 dark:border-gm-blue/20">
               <div className="flex flex-col md:flex-row gap-4">
                 {videoThumbnail && (
                   <div className="md:w-1/3">
@@ -197,8 +201,8 @@ export default function VideoAnalyzer() {
                   </div>
                 )}
                 <div className="flex-1">
-                  <h2 className="text-xl font-semibold mb-2">{videoTitle}</h2>
-                  <div className="flex items-center text-sm text-blue-600 dark:text-blue-400 mb-4">
+                  <h2 className="text-xl font-semibold mb-2 text-gm-darkblue dark:text-white">{videoTitle}</h2>
+                  <div className="flex items-center text-sm text-gm-blue dark:text-gm-lightblue mb-4">
                     <a href={youtubeUrl} target="_blank" rel="noopener noreferrer" className="flex items-center">
                       <Youtube className="h-4 w-4 mr-1" />
                       View on YouTube
@@ -212,7 +216,9 @@ export default function VideoAnalyzer() {
                         <span>Analyzing video sentiment...</span>
                         <span>{analysisProgress}%</span>
                       </div>
-                      <Progress value={analysisProgress} className="h-2" />
+                      <Progress value={analysisProgress} className="h-2 bg-gray-200 dark:bg-gm-navy/80">
+                        <div className="h-full bg-gm-blue rounded-full" style={{ width: `${analysisProgress}%` }} />
+                      </Progress>
                     </div>
                   )}
 
@@ -226,7 +232,7 @@ export default function VideoAnalyzer() {
                               ? "text-green-600 dark:text-green-400"
                               : sentimentData.negative > 30
                                 ? "text-red-600 dark:text-red-400"
-                                : "text-blue-600 dark:text-blue-400"
+                                : "text-gm-blue dark:text-gm-lightblue"
                           }`}
                         >
                           {sentimentData.positive > 60
@@ -237,7 +243,11 @@ export default function VideoAnalyzer() {
                         </p>
                       </div>
                       <div className="flex-1 flex justify-end">
-                        <Button variant="outline" onClick={resetAnalysis}>
+                        <Button
+                          variant="outline"
+                          onClick={resetAnalysis}
+                          className="border-gm-blue text-gm-blue hover:bg-gm-blue/10 dark:border-gm-lightblue dark:text-gm-lightblue dark:hover:bg-gm-blue/20"
+                        >
                           Analyze Another Video
                         </Button>
                       </div>
@@ -255,8 +265,8 @@ export default function VideoAnalyzer() {
                 transition={{ delay: 0.2 }}
                 className="space-y-8"
               >
-                <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-6 shadow-sm border border-gray-100 dark:border-gray-800">
-                  <h3 className="text-lg font-semibold mb-4">Sentiment Breakdown</h3>
+                <div className="bg-white dark:bg-gm-navy rounded-lg p-6 shadow-sm border border-gray-100 dark:border-gm-blue/20">
+                  <h3 className="text-lg font-semibold mb-4 text-gm-darkblue dark:text-white">Sentiment Breakdown</h3>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <SentimentChart data={sentimentData} />
@@ -270,8 +280,8 @@ export default function VideoAnalyzer() {
                           </div>
                           <div className="text-sm">Positive</div>
                         </div>
-                        <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/20">
-                          <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                        <div className="p-4 rounded-lg bg-gm-lightgray dark:bg-gm-blue/20">
+                          <div className="text-2xl font-bold text-gm-blue dark:text-gm-lightblue">
                             {sentimentData.neutral}%
                           </div>
                           <div className="text-sm">Neutral</div>
@@ -287,12 +297,12 @@ export default function VideoAnalyzer() {
                   </div>
                 </div>
 
-                <div className="bg-white dark:bg-[#1a1a1a] rounded-lg p-6 shadow-sm border border-gray-100 dark:border-gray-800">
-                  <h3 className="text-lg font-semibold mb-4">Sentiment Timeline</h3>
+                <div className="bg-white dark:bg-gm-navy rounded-lg p-6 shadow-sm border border-gray-100 dark:border-gm-blue/20">
+                  <h3 className="text-lg font-semibold mb-4 text-gm-darkblue dark:text-white">Sentiment Timeline</h3>
                   <SentimentTimeline data={timelineData} />
 
                   <div className="mt-6 space-y-3">
-                    <h4 className="text-sm font-medium">Key Highlights</h4>
+                    <h4 className="text-sm font-medium text-gm-darkblue dark:text-white">Key Highlights</h4>
                     <ul className="space-y-2">
                       {timelineData
                         .filter((item, index) => index % 3 === 0 || item.sentiment !== "neutral")
@@ -305,7 +315,7 @@ export default function VideoAnalyzer() {
                                   ? "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300"
                                   : item.sentiment === "negative"
                                     ? "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300"
-                                    : "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
+                                    : "bg-gm-lightgray text-gm-darkblue dark:bg-gm-blue/20 dark:text-gm-lightblue"
                               }`}
                             >
                               {item.time}

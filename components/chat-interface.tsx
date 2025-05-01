@@ -104,7 +104,7 @@ export default function ChatInterface() {
   return (
     <div className="flex flex-col h-[calc(100vh-64px)]">
       {/* Chat messages */}
-      <div className="flex-1 overflow-y-auto bg-white dark:bg-[#1a1a1a] p-4 md:p-0">
+      <div className="flex-1 overflow-y-auto bg-white dark:bg-gm-darknavy p-4 md:p-0">
         <div className="max-w-3xl mx-auto">
           <div className="space-y-6 py-8">
             <AnimatePresence initial={false}>
@@ -115,8 +115,8 @@ export default function ChatInterface() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
                   className={cn(
-                    "px-4 py-6 md:px-6 md:py-8 border-b border-gray-100 dark:border-gray-800",
-                    message.role === "user" ? "bg-white dark:bg-[#1a1a1a]" : "bg-[#f7f7f8] dark:bg-[#0f0f0f]",
+                    "px-4 py-6 md:px-6 md:py-8 border-b border-gray-100 dark:border-gm-navy",
+                    message.role === "user" ? "bg-white dark:bg-gm-darknavy" : "bg-[#f7f7f8] dark:bg-gm-navy",
                   )}
                 >
                   <div className="max-w-3xl mx-auto flex">
@@ -124,8 +124,8 @@ export default function ChatInterface() {
                       className={cn(
                         "w-7 h-7 rounded-full flex items-center justify-center mr-4 mt-1",
                         message.role === "user"
-                          ? "bg-gray-700 text-white dark:bg-gray-300 dark:text-gray-800"
-                          : "bg-green-500 text-white",
+                          ? "bg-gm-darkgray text-white dark:bg-gray-300 dark:text-gray-800"
+                          : "bg-gm-blue text-white",
                       )}
                     >
                       {message.role === "user" ? "U" : "AI"}
@@ -140,16 +140,16 @@ export default function ChatInterface() {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="px-4 py-6 md:px-6 md:py-8 border-b border-gray-100 dark:border-gray-800 bg-[#f7f7f8] dark:bg-[#0f0f0f]"
+                className="px-4 py-6 md:px-6 md:py-8 border-b border-gray-100 dark:border-gm-navy bg-[#f7f7f8] dark:bg-gm-navy"
               >
                 <div className="max-w-3xl mx-auto flex">
-                  <div className="w-7 h-7 rounded-full bg-green-500 text-white flex items-center justify-center mr-4 mt-1">
+                  <div className="w-7 h-7 rounded-full bg-gm-blue text-white flex items-center justify-center mr-4 mt-1">
                     AI
                   </div>
                   <div className="flex items-center">
                     <div className="flex space-x-1">
                       <motion.div
-                        className="w-2 h-2 rounded-full bg-gray-400 dark:bg-gray-500"
+                        className="w-2 h-2 rounded-full bg-gm-gray dark:bg-gm-lightblue/50"
                         animate={{ y: [0, -5, 0] }}
                         transition={{
                           duration: 0.6,
@@ -159,7 +159,7 @@ export default function ChatInterface() {
                         }}
                       />
                       <motion.div
-                        className="w-2 h-2 rounded-full bg-gray-400 dark:bg-gray-500"
+                        className="w-2 h-2 rounded-full bg-gm-gray dark:bg-gm-lightblue/50"
                         animate={{ y: [0, -5, 0] }}
                         transition={{
                           duration: 0.6,
@@ -169,7 +169,7 @@ export default function ChatInterface() {
                         }}
                       />
                       <motion.div
-                        className="w-2 h-2 rounded-full bg-gray-400 dark:bg-gray-500"
+                        className="w-2 h-2 rounded-full bg-gm-gray dark:bg-gm-lightblue/50"
                         animate={{ y: [0, -5, 0] }}
                         transition={{
                           duration: 0.6,
@@ -189,7 +189,7 @@ export default function ChatInterface() {
       </div>
 
       {/* Input area */}
-      <div className="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#1a1a1a] p-4">
+      <div className="border-t border-gray-200 dark:border-gm-navy bg-white dark:bg-gm-darknavy p-4">
         <div className="max-w-3xl mx-auto">
           <form onSubmit={handleSendMessage} className="flex items-center gap-2">
             <Input
@@ -197,13 +197,13 @@ export default function ChatInterface() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask about best practices..."
-              className="flex-1 border-gray-300 dark:border-gray-700 focus-visible:ring-gray-300 dark:focus-visible:ring-gray-600"
+              className="flex-1 border-gray-300 dark:border-gm-navy focus-visible:ring-gm-blue dark:focus-visible:ring-gm-blue"
               disabled={isTyping}
             />
             <Button
               type="submit"
               disabled={isTyping || !input.trim()}
-              className="bg-gray-800 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600"
+              className="bg-gm-blue hover:bg-gm-darkblue text-white"
             >
               <Send className="h-4 w-4" />
               <span className="sr-only">Send</span>

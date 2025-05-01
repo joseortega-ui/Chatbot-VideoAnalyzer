@@ -74,17 +74,17 @@ export default function ExamplePrompts() {
         <Card
           key={index}
           className={cn(
-            "p-4 cursor-pointer transition-all border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 hover:shadow-md",
-            hoveredIndex === index ? "bg-gray-50 dark:bg-gray-800/50" : "",
+            "p-4 cursor-pointer transition-all border border-gray-200 dark:border-gm-blue/20 hover:border-gm-blue dark:hover:border-gm-blue hover:shadow-md",
+            hoveredIndex === index ? "bg-gm-lightgray dark:bg-gm-blue/10" : "",
           )}
           onMouseEnter={() => setHoveredIndex(index)}
           onMouseLeave={() => setHoveredIndex(null)}
           onClick={() => handleExampleClick(example)}
         >
           <div className="space-y-2">
-            <h3 className="font-medium">{example.title}</h3>
+            <h3 className="font-medium text-gm-darkblue dark:text-white uppercase">{example.title}</h3>
             <p className="text-sm text-muted-foreground">{example.description}</p>
-            <div className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+            <div className="text-xs text-gm-gray dark:text-gray-400 mt-2">
               {example.category === "chat" ? "Chatbot" : "Video Analyzer"}
             </div>
           </div>

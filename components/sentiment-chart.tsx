@@ -16,7 +16,7 @@ export default function SentimentChart({ data }: SentimentChartProps) {
   // Transform data for the chart
   const chartData = [
     { name: "Positive", value: data.positive, color: "#22c55e" },
-    { name: "Neutral", value: data.neutral, color: "#3b82f6" },
+    { name: "Neutral", value: data.neutral, color: "#0170CE" }, // GM Blue
     { name: "Negative", value: data.negative, color: "#ef4444" },
   ]
 
